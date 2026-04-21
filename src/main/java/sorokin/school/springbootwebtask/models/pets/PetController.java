@@ -30,11 +30,11 @@ public class PetController {
 
     @PutMapping("/{petId}")
     public ResponseEntity<PetDto> updatePet(
-            @PathVariable("petId") Long userId,
+            @PathVariable("petId") Long petId,
             @RequestBody @Valid PetDto petToUpdate
     ) {
         return ResponseEntity
-                .ok(petService.updatePet(userId, petToUpdate));
+                .ok(petService.updatePet(petId, petToUpdate));
     }
 
     @DeleteMapping("/{petId}")
