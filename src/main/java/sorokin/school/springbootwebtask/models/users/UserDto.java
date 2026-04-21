@@ -21,6 +21,7 @@ public class UserDto {
     private String email;
 
     @NotNull
+    @Min(value = 10, message = "Age should not be lower than 10.")
     private Integer age;
 
     private List<PetDto> pets;
