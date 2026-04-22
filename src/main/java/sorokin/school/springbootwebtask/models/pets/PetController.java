@@ -16,9 +16,9 @@ public class PetController {
     }
 
 
-    @PostMapping("/users/{usersId}")
+    @PostMapping
     public ResponseEntity<PetDto> createPet(
-            @PathVariable("usersId") Long userId,
+            Long userId,
             @RequestBody @Valid PetDto petToCreate
 
     ) {

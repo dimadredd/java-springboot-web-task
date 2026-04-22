@@ -7,16 +7,18 @@ import sorokin.school.springbootwebtask.models.users.UserService;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class PetService {
 
-    private long idCounter;
+    private AtomicLong idCounter = new AtomicLong();
     private final UserService userService;
     private final Map<Long, PetDto> petMap;
 
+
     public PetService(UserService userService) {
-        this.idCounter = 0;
+
         this.userService = userService;
         this.petMap = new HashMap<>();
     }
@@ -27,7 +29,7 @@ public class PetService {
             PetDto petToCreate) {
 
         var user = userService.getUserById(userId);
-        var newPetID = ++idCounter;
+        var newPetID = idCounter.incrementAndGet();
 
         var createdPet = new PetDto(
                 newPetID,
