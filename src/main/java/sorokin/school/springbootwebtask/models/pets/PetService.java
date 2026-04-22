@@ -12,13 +12,13 @@ import java.util.concurrent.atomic.AtomicLong;
 @Service
 public class PetService {
 
-    private AtomicLong idCounter = new AtomicLong();
+    private AtomicLong idCounter;
     private final UserService userService;
     private final Map<Long, PetDto> petMap;
 
 
     public PetService(UserService userService) {
-
+        this.idCounter = new AtomicLong();
         this.userService = userService;
         this.petMap = new HashMap<>();
     }
